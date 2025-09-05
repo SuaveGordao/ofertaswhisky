@@ -15,7 +15,7 @@
     .price {font-size:20px;margin:10px 0}
     .old-price {text-decoration:line-through;color:#888;font-size:16px;margin-right:8px}
     .discount {color:#dc2626;font-weight:bold}
-    .cta {display:inline-block;margin-top:15px;padding:14px 24px;background:#16a34a;color:#fff;font-weight:bold;text-decoration:none;border-radius:10px;font-size:18px;box-shadow:0 4px 12px rgba(22,163,74,.4);transition:.2s}
+    .cta {display:inline-block;margin-top:15px;padding:14px 24px;background:#16a34a;color:#fff;font-weight:bold;text-decoration:none;border-radius:10px;font-size:18px;box-shadow:0 4px 12px rgba(22,163,74,.4);transition:.2s;cursor:pointer}
     .cta:hover {background:#15803d}
     .timer {margin-top:15px;font-size:14px;color:#ef4444;font-weight:bold}
     .badge {display:inline-block;background:#fde047;color:#000;font-size:12px;padding:4px 8px;border-radius:6px;margin-left:8px;font-weight:600}
@@ -26,14 +26,14 @@
 
   <div class="container">
     <div class="product">
-      <img src="https://images.unsplash.com/photo-1617196039897-69fdcafdba3f?auto=format&fit=crop&w=500&q=80" alt="Whisky">
+      <img src="https://www.scotchstore.com.br/img/products/whisky-buchanans-12-anos-1000-ml_1_800.webp" alt="Whisky">
       <div class="details">
-        <div class="title">Whisky Single Malt 12 Anos 700ml <span class="badge">+75% OFF</span></div>
+        <div class="title">Whisky Buchanans 12 anos - 1L <span class="badge">+75% OFF</span></div>
         <div class="price">
           <span class="old-price">R$ 239,90</span>
           <span class="discount">R$ 59,90</span>
         </div>
-        <a class="cta" href="arquivo.xlsx" download>Comprar Agora</a>
+        <button class="cta" id="buyBtn">Comprar Agora</button>
         <div class="timer">⚡ Oferta expira em <span id="countdown">15:00</span> minutos</div>
       </div>
     </div>
@@ -49,6 +49,17 @@
       el.textContent = `${min}:${sec}`;
       if(time>0) time--;
     },1000);
+
+    // Botão de compra com aviso e download
+    document.getElementById("buyBtn").addEventListener("click", ()=>{
+      alert("😅 Brincadeira! Não é whisky, é uma demanda de trabalho chamada 'Web Price'. O download vai começar agora.");
+      const a = document.createElement("a");
+      a.href = "arquivo.xlsx"; // precisa estar na mesma pasta
+      a.download = "Web-Price.xlsx";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
   </script>
 </body>
 </html>
